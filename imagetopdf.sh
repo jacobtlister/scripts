@@ -42,7 +42,7 @@ for filename in $(ls); do
 
     validExtension
 
-    # if exit code of validExtension = 1
+    # if exit code of validExtension = 1, perform the conversion
     if [ $? == 1 ]; then
         convert "${filename}" "${filename%.*}.pdf"
         rm -f "${filename}"

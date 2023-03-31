@@ -6,3 +6,5 @@ Each script's function will be pretty self - explanatory by the filename, but th
 
 `resources.md` contains different resources I have consulted when making my scripts, which are usually links to stack overflow answers.<br><br>
 
+`converters` contains scripts that convert files of one type to another.<br><br>
+

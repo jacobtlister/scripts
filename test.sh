@@ -50,3 +50,30 @@ echo "a$nl""a"
 
 # check whether a certain string appears in a file or string, returns true if there is a match
 # [[ -n $(grep -n "forawdawdwadawd" makealiases.sh) ]]
+
+# get number of spaces in a string
+# also a little experiment i did with piping
+# referenced https://unix.stackexchange.com/a/246904 for the command in numberOfSpaces
+numberOfSpaces() {
+    # i know printf directly with variables is poor form, but I want to retain newlines
+    echo "$(printf "${@}" | head -n 1 | tr -cd " " | wc -m)"
+}
+
+string="hj sjfd hjdfsj hk df hjk g hk jkh a"
+num=5
+numberOfSpaces ${string} >> num
+echo "${num}"
+
+# messing with for loops
+a=""
+b=5
+
+echo $a
+
+for i in $(seq 1 1 ${b}); do
+    a+="${i}"
+    echo $a
+done
+
+# /dev/null outputting (into the void he goes)
+echo hi >  /dev/null

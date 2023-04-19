@@ -11,7 +11,7 @@
             https://en.wikipedia.org/wiki/Video_file_format
 notes
 
-# code starts here --------------------------------------------------------------------------------
+# code starts here -----------------------------------------------------------------------------------------------
 
 # array which contains many types of video file extensions
 videoExtensions=("3g2" "3gp" "amv" "asf" "avi" "drc" "flv" "f4v" "f4p" "f4a" "f4b" "m4v" "mng" "mov" "qt" "mp4" "m4p" "m4v" "mpg" "mpg2" "mpeg" "mpe" "mpv" "m2v" "mts" "m2ts" "ts" "mxf" "nsv" "ogv" "ogg" "rm" "rmvb" "roq" "svi" "viv" "vob" "webm" "wmv" "yuv")

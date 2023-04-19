@@ -15,7 +15,7 @@ additional notes
         https://suay.site/?p=2369
 notes
 
-# code starts here --------------------------------------------------------------------------------
+# code starts here -----------------------------------------------------------------------------------------------
 
 # array of most common image file extensions I see in daily / common use
 imageExtensions=("png" "jpg" "jpeg" "jfif" "svg" "webp")

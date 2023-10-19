@@ -76,7 +76,6 @@ print() {
 # code starts here -----------------------------------------------------------------------------------------------
 
 if [ $# == 0 ]; then
-    echo hi
     gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf ./*.pdf
     cp merged.pdf /tmp
     rm -f ./*.pdf

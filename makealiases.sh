@@ -1,8 +1,10 @@
 #!/bin/bash
 # File: makealiases.sh
-# creates aliases for ALL .sh scripts in the current working directory
 
-<<'notes'
+: <<info
+    description
+        creates aliases for ALL .sh scripts in the current working directory
+
     required packages
         sed (apt)
 
@@ -12,7 +14,7 @@
         if used in the future it will make sure not to add duplicate aliases and keep old aliases
 
         this script assumes that the name of the file will also be the alias name (name your scripts well!)
-notes
+info
 
 # code starts here --------------------------------------------------------------------------------
 

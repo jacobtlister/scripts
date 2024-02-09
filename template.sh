@@ -1,67 +1,19 @@
 #!/bin/bash
 # File: FILENAME.sh
-# DESCRIPTION
 
-<<'notes'
+: <<info
+    description
+        DESCRIPTION
+
     required packages
         PACKAGE_NAME (REPO OR WEBPAGE LINK)
 
     additional notes
         EXTRA INFO IF NEEDED
-notes
+info
 
-# print() --------------------------------------------------------------------------------------------------------
-#     print(): a custom function for word - wrapped, indented printing
-#     inputs : string to print, amounts of spaces to additionally indent (optional, final argument)
-#     outputs: none
-#
-#     example of different calls,
-#         print "hello world"      => hello world
-#
-#         print "hello\nworld"     => hello
-#                                     world
-#
-#         print "  hello world"    =>   hello world
-#
-#         print "  hello\nworld"   =>   hello
-#                                           world
-#
-#         print "  hello\nworld" 2 =>   hello
-#                                         world
-#
-#     extra notes
-#       not using fmt because when you do fmt -t it indents only 3 spaces (bad and gross and mean)
-#       the indent used is one of 2 things,
-#           if the first line has no leading whitespace, the indent is 0
-#           otherwise, the indent is 4 spaces + indent amount (default 4)
-print() {
-    # leadingSpaces=-1 and use check later to make sure to not reassign value
-    leadingSpaces=-1
-    spaces=""
-
-    if [ "${leadingSpaces}" == -1 ]; then
-        # this line get the number of leading spaces for the string
-        leadingSpaces=$(echo "${1}" | head -n 1 | awk '{ match($0, /^ */); printf("%d", RLENGTH) }')
-    fi
-
-    if [ "${leadingSpaces}" != 0 ]; then
-        if [ "${#}" == 1 ]; then
-            (( leadingSpaces=leadingSpaces+4 ))
-
-        else
-            (( leadingSpaces=leadingSpaces+"${2}" ))
-        fi
-    fi
-
-    for i in $(seq 1 1 "${leadingSpaces}"); do
-        spaces+=" "
-    done
-
-    # i know printf directly with variables is poor form (SC2059), but I want to retain newlines so i must
-    printf "${1}" | fold -s | awk -v spaces="${spaces}" '{ if ( NR == 1 ) { print $0 } else { print spaces $0 } }'
-}
-
-# print() end ----------------------------------------------------------------------------------------------------
-
-# code starts here -----------------------------------------------------------------------------------------------
+# sources all scripts in the utils directory of scripts
+# commenting this so ShellCheck doesn't freak out
+# shellcheck source=/dev/null
+for f in "$HOME/scripts/utils"/*.sh; do source "${f}"; done
 

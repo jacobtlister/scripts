@@ -1,16 +1,18 @@
 #!/bin/bash
 # File: test.sh
-# this script has no real purpose other than for me to experiment
-# this isn't really meant to be used, more so to run and see the outputs for me to learn about certain shell features
-# this is also for me to experiment with fixes that shellcheck recommends
 
-<<'notes'
+: <<info
+    description
+        this script has no real purpose other than for me to experiment. this isn't really meant
+        to be used, more so to run and see the outputs for me to learn about certain shell features.
+        this is also for me to experiment with fixes that shellcheck recommends.
+
     required packages
         various (in comments above each experiment if needed)
 
     additional notes
         if i am testing a shellcheck recommmendation / fix, I will include the specific SC number in the comment above the code
-notes
+info
 
 # code starts here --------------------------------------------------------------------------------
 

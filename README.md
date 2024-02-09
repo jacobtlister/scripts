@@ -16,7 +16,7 @@ i use gnu bash 5.1.16. i use vs code as my text editor.<br><br>
 
 # script storage
 
-for sanity's sake (aka so the scripts i make will be able to access utility scripts without me having a stroke trying to figure out how to find a script from anywhere in the file system), store the scripts directory in your home folder.
+for sanity's sake (aka so the scripts i make will be able to access utility scripts without me having a stroke trying to figure out how to find a script from anywhere in the file system), store the scripts directory in your `$HOME` folder.
 
 # explanation of repository contents
 
@@ -28,4 +28,4 @@ for sanity's sake (aka so the scripts i make will be able to access utility scri
 
 `converters` contains scripts that convert files of one type to another.<br><br>
 
-`utilities` contains scripts that usually hold functions for use by many of the other scripts in this repository.<br><br>
+`utils` contains scripts that usually hold functions for use by many of the other scripts in this repository.<br><br>

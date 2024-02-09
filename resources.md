@@ -92,4 +92,13 @@ markdown guide used for making the README<br>
 https://www.markdownguide.org/basic-syntax/<br><br>
 
 # about locating scripts
+
 https://mywiki.wooledge.org/BashFAQ/028<br><br>
+
+# to ignore ShellCheck errors
+
+https://github.com/koalaman/shellcheck/wiki/ignore<br><br>
+
+# multiline comments in bash (no ShellCheck warnings)
+
+https://stackoverflow.com/a/46049228<br><br>

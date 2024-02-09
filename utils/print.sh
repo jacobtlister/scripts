@@ -2,13 +2,13 @@
 # File: print.sh
 # a custom function for word - wrapped, indented printing
 
-<<'notes'
+: <<info
     required packages
         none
 
     inputs : string to print, amounts of spaces to additionally indent (optional, final argument)
     outputs: none
-notes
+info
 
 print() {
     # leadingSpaces=-1 and use check later to make sure to not reassign value

@@ -90,3 +90,6 @@ https://stackoverflow.com/a/8467449<br><br>
 
 markdown guide used for making the README<br>
 https://www.markdownguide.org/basic-syntax/<br><br>
+
+# about locating scripts
+https://mywiki.wooledge.org/BashFAQ/028<br><br>

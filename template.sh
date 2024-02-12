@@ -1,7 +1,7 @@
 #!/bin/bash
 # File: FILENAME.sh
 
-: <<info
+: <<'info'
     description
         DESCRIPTION
 

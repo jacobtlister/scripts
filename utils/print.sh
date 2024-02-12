@@ -1,8 +1,10 @@
 #!/bin/bash
 # File: print.sh
-# a custom function for word - wrapped, indented printing
 
-: <<info
+: <<'info'
+    description
+        a custom function for word - wrapped, indented printing
+
     required packages
         none
 

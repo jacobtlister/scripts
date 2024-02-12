@@ -1,7 +1,7 @@
 #!/bin/bash
 # File: topdf.sh
 
-: <<info
+: <<'info'
     description
         converts .doc* and .ppt* files to pdfs and deletes the original files (converted files keep their names)
 

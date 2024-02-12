@@ -1,7 +1,7 @@
 #!/bin/bash
 # File: pngtopdf.sh
 
-: <<info
+: <<'info'
     description
         coverts all images (from a preset list) in the working directory into pdfs and afterwards deletes
         all the converted images

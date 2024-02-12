@@ -1,8 +1,7 @@
 #!/bin/bash
 # File: pdfmerge.sh
-#
 
-: <<info
+: <<'info'
     description
         merges pdfs using ghostscript and deletes original pdfs afterwards
 

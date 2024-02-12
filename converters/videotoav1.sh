@@ -1,8 +1,10 @@
 #!/bin/bash
 # File: videotoav1.sh
-# converts all video files in the working directory to AV1 video format
 
-: <<info
+: <<'info'
+    description
+        converts all video files in the working directory to AV1 video format
+
     required packages
         ffmpeg (apt)
 

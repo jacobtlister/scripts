@@ -1,7 +1,7 @@
 #!/bin/bash
 # File: makealiases.sh
 
-: <<info
+: <<'info'
     description
         creates aliases for ALL .sh scripts in the current working directory
 

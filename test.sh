@@ -1,7 +1,7 @@
 #!/bin/bash
 # File: test.sh
 
-: <<info
+: <<'info'
     description
         this script has no real purpose other than for me to experiment. this isn't really meant
         to be used, more so to run and see the outputs for me to learn about certain shell features.

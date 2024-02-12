@@ -10,11 +10,15 @@ you can install the package from your package manager or go to the github\
 the vs code extension goes by the same name as the package (the extension requires the package)\
 <https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck>
 
-## solid all - in - one shell scripting guide
+## solid all - in - one bash scripting guide
 
 as i have been working on this repository i have been looking for good resources to learn shell scripting. over time i have come across lots of stack exchange / overflow topics that cover one - off or niche topics, but this guide linked below is the best general guide / learning tool i have found for shell scripting. it starts from nothing and builds on the topics over time. it also provide good practice problems to go along with each topic introduced and covered, so it would be an especially good resource for beginners. it also links to other useful resources which is nice
 
 <https://bash.cyberciti.biz/guide/Main_Page>
+
+## another bash scripting guide
+
+<https://tldp.org/LDP/abs/html/>
 
 ## bash scripting in jupyter notebooks
 

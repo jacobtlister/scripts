@@ -2,103 +2,110 @@
 
 ## shell check package for vs code (the goat)
 
-shell check is a vs code extension and linux package that checks your shell scripts for errors and suggest<br>
-fixes for broken or risky code. overall, this utility is incredibly helpful when making scripts<br><br>
-you can install the package from your package manager or go to the github<br>
-https://github.com/koalaman/shellcheck<br><br>
-the vs code extension goes by the same name as the package (the extension requires the package)<br>
-https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck<br><br>
+shell check is a vs code extension and linux package that checks your shell scripts for errors and suggest fixes for broken or risky code. overall, this utility is incredibly helpful when making scripts.
+
+you can install the package from your package manager or go to the github\
+<https://github.com/koalaman/shellcheck>
+
+the vs code extension goes by the same name as the package (the extension requires the package)\
+<https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck>
 
 ## solid all - in - one shell scripting guide
 
-as i have been working on this repository i have been looking for good resources to learn shell scripting. over<br>
-time i have come across lots of stack exchange / overflow topics that cover one - off or niche topics, but this guide<br>
-linked below is the best general guide / learning tool i have found for shell scripting. it starts from nothing and<br>
-builds on the topics over time. it also provide good practice problems to go along with each topic introduced and<br>
-covered, so it would be an especially good resource for beginners. it also links to other useful resources which is nice.<br><br>
+as i have been working on this repository i have been looking for good resources to learn shell scripting. over time i have come across lots of stack exchange / overflow topics that cover one - off or niche topics, but this guide linked below is the best general guide / learning tool i have found for shell scripting. it starts from nothing and builds on the topics over time. it also provide good practice problems to go along with each topic introduced and covered, so it would be an especially good resource for beginners. it also links to other useful resources which is nice
 
-https://bash.cyberciti.biz/guide/Main_Page<br><br>
+<https://bash.cyberciti.biz/guide/Main_Page>
+
+## bash scripting in jupyter notebooks
+
+to make doing random tests of bash scripts more organized, i started doing my tests in a bash jupyter notebook. i ended finding the following website and guide to do this. i run my jupyter notebooks in vs code, and use the built in extension for their support.
+
+<https://github.com/takluyver/bash_kernel>
+
+<https://evodify.com/python-r-bash-jupyter-notebook/>
 
 ## command line arguments
 
-command line arguments<br>
-https://linuxhint.com/command_line_arguments_bash_script/<br><br>
+command line arguments\
+<https://linuxhint.com/command_line_arguments_bash_script/>
 
-get last command line arg using `${!#}`<br>
-https://super-unix.com/unixlinux/bash-how-does-work-in-bash-to-get-the-last-command-line-argument/<br><br>
+get last command line arg using `${!#}`\
+<https://super-unix.com/unixlinux/bash-how-does-work-in-bash-to-get-the-last-command-line-argument/>
 
 ## print() function resources
 
-when i was working on some of these scripts, i wanted to output text to the command line, but couldn't align<br>
-the text like i wanted to just with packages like fold and fmt, so i dug around for a while and found these<br>
-resources linked below and made my customized print function.<br><br>
+when i was working on some of these scripts, i wanted to output text to the command line, but couldn't align the text like i wanted to just with packages like fold and fmt, so i dug around for a while and found these resources linked below and made my customized print function.
 
-https://unix.stackexchange.com/a/446153<br>
-https://stackoverflow.com/a/34690791<br>
-https://www.cyberciti.biz/faq/linux-unix-appleosx-bsd-bash-passing-variables-to-awk/<br>
-post 2 (by Chubler_XL)<br>
-https://www.unix.com/shell-programming-and-scripting/253291-counting-leading-spaces-character.html<br><br>
+<https://unix.stackexchange.com/a/446153>
+
+<https://stackoverflow.com/a/34690791>
+
+<https://www.cyberciti.biz/faq/linux-unix-appleosx-bsd-bash-passing-variables-to-awk/>
+
+post 2 (by Chubler_XL)\
+<https://www.unix.com/shell-programming-and-scripting/253291-counting-leading-spaces-character.html>
 
 ## arrays and strings
 
-array basics<br>
-https://www.tutorialspoint.com/unix/unix-using-arrays.htm<br><br>
+array basics\
+<https://www.tutorialspoint.com/unix/unix-using-arrays.htm>
 
-how to append data to strings and arrays<br>
-https://stackoverflow.com/a/1951523<br><br>
+how to append data to strings and arrays\
+<https://stackoverflow.com/a/1951523>
 
-get size of an array<br>
-https://stackoverflow.com/a/1886483<br><br>
+get size of an array\
+<https://stackoverflow.com/a/1886483>
 
-removing an index from an array using unset<br>
-https://stackoverflow.com/a/47798640<br><br>
+removing an index from an array using unset\
+<https://stackoverflow.com/a/47798640>
 
-explanation of splitting strings<br>
-https://stackoverflow.com/a/59629043<br><br>
+explanation of splitting strings\
+<https://stackoverflow.com/a/59629043\>
 
 ## file io with sed
 
-way to insert text at a certain line in a file with sed<br>
-https://stackoverflow.com/a/6537587<br><br>
+way to insert text at a certain line in a file with sed\
+<https://stackoverflow.com/a/6537587>
 
-append text to the end of a file with sed<br>
-https://stackoverflow.com/a/30219386<br><br>
+append text to the end of a file with sed\
+<https://stackoverflow.com/a/30219386>
 
-printing lines from a file using sed (also see test.sh for more examples)<br>
-https://stackoverflow.com/a/83347<br><br>
+printing lines from a file using sed (also see test.sh for more examples)\
+<https://stackoverflow.com/a/83347>
 
-while loop for each line of a text file<br>
-https://www.shellcheck.net/wiki/SC2013<br><br>
+while loop for each line of a text file\
+<https://www.shellcheck.net/wiki/SC2013>
 
 ## word wrap using fmt and fold
 
-fmt<br>
-https://www.geeksforgeeks.org/fmt-command-unixlinux/<br><br>
+fmt\
+<https://www.geeksforgeeks.org/fmt-command-unixlinux/>
 
-fold<br>
-https://www.geeksforgeeks.org/fold-command-in-linux-with-examples/<br><br>
+fold\
+<https://www.geeksforgeeks.org/fold-command-in-linux-with-examples/>
 
-another resource that gives a more in - depth explanation of fmt and fold<br>
-https://linuxhandbook.com/fold-fmt-commands/<br><br>
+another resource that gives a more in - depth explanation of fmt and fold\
+<https://linuxhandbook.com/fold-fmt-commands/>
 
-## miscellaneous
+## printing newlines
 
-use printf for newlines instead of echo<br>
-https://stackoverflow.com/a/8467449<br><br>
+<https://stackoverflow.com/a/13192701>
 
-# markdown resources
+## about locating scripts
 
-markdown guide used for making the README<br>
-https://www.markdownguide.org/basic-syntax/<br><br>
+<https://mywiki.wooledge.org/BashFAQ/028>
 
-# about locating scripts
+## to ignore ShellCheck errors
 
-https://mywiki.wooledge.org/BashFAQ/028<br><br>
+<https://github.com/koalaman/shellcheck/wiki/ignore>
 
-# to ignore ShellCheck errors
+## multiline comments in bash (no ShellCheck warnings)
 
-https://github.com/koalaman/shellcheck/wiki/ignore<br><br>
+<https://stackoverflow.com/a/46049228>
 
-# multiline comments in bash (no ShellCheck warnings)
+## miscellaneous (not bash)
 
-https://stackoverflow.com/a/46049228<br><br>
+### markdown resources
+
+markdown guide used for making the README\
+<https://www.markdownguide.org/basic-syntax/>

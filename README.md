@@ -1,4 +1,4 @@
-# scripts README
+# scripts
 
 ## what is this repository?
 

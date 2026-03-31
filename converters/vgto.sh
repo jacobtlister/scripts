@@ -35,6 +35,11 @@ info
 # if converting to .jpg, use pdftoppm if input is a pdf and convert if input is a svg/eps
 # create command version that allows custom input filetype as well
 
+# resources
+# https://stackoverflow.com/a/61700520
+# https://bugs.launchpad.net/ubuntu/+source/inkscape/+bug/437366
+# https://askubuntu.com/questions/1451862/warning-message-while-rendering-latex-in-inkscape
+
 # sources all functions in /scripts/funcs/
 # commenting this so shellcheck doesn't freak out
 # shellcheck source=/dev/null

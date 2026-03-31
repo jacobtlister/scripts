@@ -2,22 +2,23 @@
 # File: print.sh
 
 : <<'info'
-    description
-        a custom function for word - wrapped, indented printing
-
     required packages
-        none
+        awk
 
-    additional notes
-        function format is:
-            print string [leadingspaces]
-        prints string to the terminal with leadingspaces (default 0) leading spaces
+    description
+        a custom function for word-wrapped, indented printing
+
+        there are different behaviors depending on the amount of command line arguments:
+            print string
+            print string lead
+
+        prints string to the terminal with lead (optional, default 0) leading spaces
 info
 
 # $1 - string to print
 # $2 - number of leading spaces to insert on each line
 print() {
-    if [ $# == 2 ]; then
+    if [[ $# == 2 ]]; then
         leadingspaces="${2}"
     else
         leadingspaces=0
@@ -26,7 +27,7 @@ print() {
     # string containing leadingspaces " " characters
     spaces=""
 
-    for i in $(seq 1 1 "${leadingspaces}"); do
+    for (( i = 1; i <= "${leadingspaces}"; i++ )); do
         spaces+=" "
     done
 

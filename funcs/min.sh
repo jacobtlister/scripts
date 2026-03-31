@@ -9,7 +9,7 @@
         returns the minimum element in a list
 info
 
-# $1 - list to find maximum element of
+# $1 - list to find minimum element of
 min() {
     read -r -a arr <<< "${1}"
 

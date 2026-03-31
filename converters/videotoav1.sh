@@ -3,13 +3,13 @@
 
 : <<'info'
     required packages
-        ffmpeg (apt)
+        ffmpeg
 
     description
         this script re-encodes a variety of video formats to AV1 encoding and deletes the
         original files; re-encoded files keep their original filenames
 
-        there are different behaviors depending on the amount of command line arguments included:
+        there are different behaviors depending on the amount of command line arguments:
             0 - re-encodes and deletes all video files in the current working directory
             n - re-encodes argument files
 
@@ -29,26 +29,25 @@ info
 #     ffmpeg use cuda for hardware encoding
 
 # sources all functions in /scripts/funcs/
-# commenting this so ShellCheck doesn't freak out
+# commenting this so shellcheck doesn't freak out
 # shellcheck source=/dev/null
 for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
 
 # array which contains many types of video file extensions
-videoextensions=("3g2" "3gp" "amv" "asf" "avi" "drc" "flv" "f4v" "f4p" "f4a" "f4b" "m4v" "mng" "mov" "qt" "mp4" "m4p" "m4v" "mpg" "mpg2" "mpeg" "mpe" "mpv" "m2v" "mts" "m2ts" "ts" "mxf" "nsv" "ogv" "ogg" "rm" "rmvb" "roq" "svi" "viv" "vob" "webm" "wmv" "yuv")
+extensions=("3g2" "3gp" "amv" "asf" "avi" "drc" "flv" "f4v" "f4p" "f4a" "f4b" "m4v" "mng" "mov" "qt" "mp4" "m4p" "m4v" "mpg" "mpg2" "mpeg" "mpe" "mpv" "m2v" "mts" "m2ts" "ts" "mxf" "nsv" "ogv" "ogg" "rm" "rmvb" "roq" "svi" "viv" "vob" "webm" "wmv" "yuv")
 
 if [[ $# == 0 ]]; then
     for file in *.*; do
-        extension=${file##*.} # gets everything after last '.' (normally the whole file extension)
-        extension=${extension,,}  # converts the entire string to lower case (for easier comparisons)
+        extension="${file##*.}"    # gets everything after last '.' (normally the whole file extension)
+        extension="${extension,,}" # converts the entire string to lower case (for easier comparisons)
 
         # if extension is valid (exit code of search = 0),
         # perform the conversion and delete original file
-        if search "${extension}" "${videoextensions[*]}" &> /dev/null; then
-            ffmpeg -y -i "$file" -c:a copy -c:v libsvtav1 "${file%.*}.mkv"
-            rm -f "$file"
+        if search "${extension}" "${extensions[*]}" &> /dev/null; then
+            ffmpeg -y -i "${file}" -c:a copy -c:v libsvtav1 "${file%.*}.mkv"
+            rm -f "${file}"
         fi
     done
-
 elif [[ $# == 1 ]] && [[ "${1}" == "-h" || "${1}" == "--help" ]]; then
     print "this script re-encodes a variety of video formats to AV1 encoding and deletes the original files (re-encoded files keep their original filenames)\n\n"
 
@@ -62,14 +61,14 @@ elif [[ $# == 1 ]] && [[ "${1}" == "-h" || "${1}" == "--help" ]]; then
     print "bash videotoav1.sh file1.mp4 file2.mp4 file3.mov\n" 4
 else
     for file in "${@}"; do
-        extension=${file##*.} # gets everything after last '.' (normally the whole file extension)
-        extension=${extension,,}  # converts the entire string to lower case (for easier comparisons)
+        extension="${file##*.}"    # gets everything after last '.' (normally the whole file extension)
+        extension="${extension,,}" # converts the entire string to lower case (for easier comparisons)
 
         # if extension is valid (exit code of search = 0),
         # perform the conversion and delete original file
-        if search "${extension}" "${videoextensions[*]}" &> /dev/null; then
-            ffmpeg -y -i "$file" -c:a copy -c:v libsvtav1 "${file%.*}.mkv"
-            rm -f "$file"
+        if search "${extension}" "${extensions[*]}" &> /dev/null; then
+            ffmpeg -y -i "${file}" -c:a copy -c:v libsvtav1 "${file%.*}.mkv"
+            rm -f "${file}"
         fi
     done
 fi

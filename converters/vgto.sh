@@ -12,12 +12,12 @@
         files keep their original filenames
 
         valid  input types are: [svg eps pdf]
-        valid output types are: [svg eps pdf png jpg]
+        valid output types are: [svg eps pdf png jpg jpeg]
 
-        there are different behaviors depending on the amount of command line arguments included,
+        there are different behaviors depending on the amount of command line arguments:
             0 - converts all svg files in the pwd into eps files
             1 - converts all svg files in the pwd into a user-inputted filetype
-            2 - if both arguments are image types, converts all arg1 files in the pwd into arg2 files
+            2 - if both arguments are image types, converts all arg1 files in the pwd into arg2 files (to-do)
             n - converts the last n-1 argument vector graphics files into a user-inputted filetype
 
         some examples of running this script are shown below:
@@ -36,11 +36,11 @@ info
 # create command version that allows custom input filetype as well
 
 # sources all functions in /scripts/funcs/
-# commenting this so ShellCheck doesn't freak out
+# commenting this so shellcheck doesn't freak out
 # shellcheck source=/dev/null
 for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
 
-outputextensions=(".svg" ".eps" ".pdf" ".png" ".jpg")
+extensions=("svg" "eps" "pdf" "png" "jpg" "jpeg")
 
 if [[ $# == 0 ]]; then
     inkscape --export-type=eps --export-ignore-filters --export-background-opacity=0.0 --export-dpi=600 --export-text-to-path --export-margin=0 ./*.svg
@@ -49,23 +49,25 @@ elif [[ $# == 1 ]]; then
         print "converts vector graphics files to a variety of different filetypes; converted files keep their original filenames\n\n"
 
         print "valid input  types are: [svg eps pdf]\n"
-        print "valid output types are: [svg eps pdf png jpg]\n\n"
+        print "valid output types are: [svg eps pdf png jpg jpeg]\n\n"
 
-        print "there are different behaviors depending on the amount of command line arguments:\n"
-        print "0 - converts all .svg files in the pwd into .eps files\n" 4
-        print "1 - converts all .svg files in the pwd into a user-inputted filetype\n" 4
-        print "n - converts the last n-1 argument vector image files into a user-inputted filetype\n\n" 4
+        print "there are different behaviors depending on the amount of command line arguments:"
+        print "0 - converts all svg files in the pwd into eps files" 4
+        print "1 - converts all svg files in the pwd into a user-inputted filetype" 4
+        print "n - converts the last n-1 argument vector graphics files into a user-inputted filetype\n\n" 4
 
-        print "some examples of running this script are shown below:\n"
-        print "bash vgto.sh\n" 4
-        print "bash vgto.sh png\n" 4
-        print "bash vgto.sh png file1.svg file2.eps file3.svg file4.pdf" 4
+        print "some examples of running this script are shown below:"
+        print "bash vgto.sh" 4
+        print "bash vgto.sh png" 4
+        print "bash vgto.sh png file1.svg file2.eps file3.svg file4.pdf\n\n" 4
 
+        print "the following link was a very helpful resource when developing this script:"
+        print "https://wiki.inkscape.org/wiki/index.php/Using_the_Command_Line" 4
     else
         # if output type is invalid (exit code of search = 1), end the script early
-        if ! search "${1}" "${outputextensions[*]}" &> /dev/null; then
+        if ! search "${1}" "${extensions[*]}" &> /dev/null; then
             print "invalid export type\n"
-            print "valid export types are: [svg, eps, pdf, png, jpg]"
+            print "valid export types are: [svg eps pdf png jpg jpeg]"
             exit 1
         fi
 
@@ -81,12 +83,11 @@ elif [[ $# == 1 ]]; then
 
         inkscape --export-type="${1}" --pdf-poppler --export-ignore-filters --export-background-opacity="${opacity}" --export-dpi="${dpi}" --export-text-to-path --export-margin=0 ./*.svg
     fi
-
 else
     # if output type is invalid (exit code of search = 1), end the script early
-    if ! search "${1}" "${outputextensions[*]}" &> /dev/null; then
+    if ! search "${1}" "${extensions[*]}" &> /dev/null; then
         print "invalid export type\n"
-        print "valid export types are: [svg, eps, pdf, png, jpg]"
+        print "valid export types are: [svg eps pdf png jpg jpeg]"
         exit 1
     fi
 

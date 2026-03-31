@@ -2,89 +2,74 @@
 # File: videotoav1.sh
 
 : <<'info'
-    description
-        converts all video files in the working directory to AV1 video format
-
     required packages
         ffmpeg (apt)
 
-    additional notes
-        referenced the following wikipedia page for the array of file extensions,
-            https://en.wikipedia.org/wiki/Video_file_format
+    description
+        this script re-encodes a variety of video formats to AV1 encoding and deletes the
+        original files; re-encoded files keep their original filenames
 
-        there are different behaviors depending on the amount of command line arguments included,
-            0 - converts and deletes all valid files in the current working directory into pdfs (same filename)
-            n - converts files from the command line arguments into pdfs (same filename)
+        there are different behaviors depending on the amount of command line arguments included:
+            0 - re-encodes and deletes all video files in the current working directory
+            n - re-encodes argument files
 
-        if -h or --help is the command line argument then this explanation and extra info will be printed instead
+        some examples of running this script are shown below:
+            bash videotoav1.sh
+            bash videotoav1.sh file.mp4
+            bash videotoav1.sh file1.mp4 file2.mp4 file3.mov
 info
 
-# sources all scripts in the utils directory of scripts
+# to-do
+# set up hardware decoding/encoding for the script:
+#     https://www.cyberciti.biz/faq/how-to-install-ffmpeg-with-nvidia-gpu-acceleration-on-linux/
+# current solution just uses a fast software encoder (faster than default av1 encoder):
+#     https://github.com/AliveTeam/SVT-AV1/blob/master/Docs/Build-Guide.md
+# once cude support is implemented, add this to the description:
+#     this script assumes that the user has a nvidia graphics card, so this script has
+#     ffmpeg use cuda for hardware encoding
+
+# sources all functions in /scripts/funcs/
 # commenting this so ShellCheck doesn't freak out
 # shellcheck source=/dev/null
-for f in "$HOME/scripts/utils"/*.sh; do source "${f}"; done
+for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
 
 # array which contains many types of video file extensions
-videoExtensions=("3g2" "3gp" "amv" "asf" "avi" "drc" "flv" "f4v" "f4p" "f4a" "f4b" "m4v" "mng" "mov" "qt" "mp4" "m4p" "m4v" "mpg" "mpg2" "mpeg" "mpe" "mpv" "m2v" "mts" "m2ts" "ts" "mxf" "nsv" "ogv" "ogg" "rm" "rmvb" "roq" "svi" "viv" "vob" "webm" "wmv" "yuv")
+videoextensions=("3g2" "3gp" "amv" "asf" "avi" "drc" "flv" "f4v" "f4p" "f4a" "f4b" "m4v" "mng" "mov" "qt" "mp4" "m4p" "m4v" "mpg" "mpg2" "mpeg" "mpe" "mpv" "m2v" "mts" "m2ts" "ts" "mxf" "nsv" "ogv" "ogg" "rm" "rmvb" "roq" "svi" "viv" "vob" "webm" "wmv" "yuv")
 
-# Checks if the passed in string matches to one of the entries in image extensions
-# ie checks if the string is a valid video file extension (out of most common extensions)
-# returns 1 if the passed string is contained in imageExtensions, 0 otherwise
-function validExtension {
-    local i=0
-
-    # while i < imageExtensions.length
-    while [ ${i} -lt ${#videoExtensions[@]} ]; do
-        if [ "$extension" = "${videoExtensions[${i}]}" ]; then
-            return 1
-        fi
-
-        (( i++ )) || true
-    done
-
-    return 0
-}
-
-if [ $# == 0 ]; then
+if [[ $# == 0 ]]; then
     for file in *.*; do
         extension=${file##*.} # gets everything after last '.' (normally the whole file extension)
         extension=${extension,,}  # converts the entire string to lower case (for easier comparisons)
 
-        validExtension
-
-        # if exit code of validExtension = 1, perform the conversion
-        if [ $? == 1 ]; then
-            ffmpeg -i "$file" -c:v libaom-av1 "${file%.*}.mkv"
+        # if extension is valid (exit code of search = 0),
+        # perform the conversion and delete original file
+        if search "${extension}" "${videoextensions[*]}" &> /dev/null; then
+            ffmpeg -y -i "$file" -c:a copy -c:v libsvtav1 "${file%.*}.mkv"
             rm -f "$file"
         fi
     done
 
-# for why the elif is structured the way it is, reference SC1028 https://www.shellcheck.net/wiki/SC1028
-# else if($# == 1 && ("${1}" == "-h" ] || [ "${1}" == "--help"))
-elif [ $# == 1 ] && { [ "${1}" == "-h" ] || [ "${1}" == "--help" ]; }; then
-    print "this script re - encodes a variety of formats formats to AV1 encoding and deletes the original files (converted files keep their names)\n\n"
+elif [[ $# == 1 ]] && [[ "${1}" == "-h" || "${1}" == "--help" ]]; then
+    print "this script re-encodes a variety of video formats to AV1 encoding and deletes the original files (re-encoded files keep their original filenames)\n\n"
 
-    print "there are different behaviors depending on the amount of command line arguments included\n\n"
+    print "there are different behaviors depending on the amount of command line arguments:\n"
+    print "0 - re-encodes and deletes all video files in the pwd\n" 4
+    print "n - re-encodes argument video files\n\n" 4
 
-    print "    0 - re - encodes and deletes all valid files in the current working directory (same filename)\n\n"
-
-    print "    n - re - encodes files from the command line arguments (same filename)\n"
-    print "            an example is\n"
-    print "                imagetopdf file1.mp4 file2.mp4 file3.mov ...\n"
-
+    print "some examples of running this script are shown below:\n"
+    print "bash videotoav1.sh\n" 4
+    print "bash videotoav1.sh file.mp4\n" 4
+    print "bash videotoav1.sh file1.mp4 file2.mp4 file3.mov\n" 4
 else
     for file in "${@}"; do
         extension=${file##*.} # gets everything after last '.' (normally the whole file extension)
         extension=${extension,,}  # converts the entire string to lower case (for easier comparisons)
 
-        validExtension
-
-        # if exit code of validExtension = 1, perform the conversion
-        if [ $? == 1 ]; then
-            ffmpeg -i "$file" -c:v libaom-av1 "${file%.*}.mkv"
+        # if extension is valid (exit code of search = 0),
+        # perform the conversion and delete original file
+        if search "${extension}" "${videoextensions[*]}" &> /dev/null; then
+            ffmpeg -y -i "$file" -c:a copy -c:v libsvtav1 "${file%.*}.mkv"
+            rm -f "$file"
         fi
     done
-
-    rm -f "${@}"
-
 fi

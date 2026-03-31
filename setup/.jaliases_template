@@ -1,0 +1,45 @@
+#!/bin/bash
+# File: .jaliases
+
+# path to scripts folder (up here so its line number is constant)
+export SCRIPTS_PATH="/path/to/scripts"
+
+: <<'info'
+    description
+        stores aliases for the scripts in this repository and some additional
+        useful aliases. note: jaliases = jacob's aliases
+
+    required packages
+        none
+
+    additional notes
+        for this to work, the following line of code must be defined in the
+        .bashrc file in your home directory:
+
+            if [ -f ~/.jaliases ]; then
+                . ~/.jaliases
+
+            elif [ -f /path/to/scripts/.jaliases ]; then
+                . /path/to/scripts/.nopush/.jaliases
+            fi
+
+        this is usually included by default in your .bashrc file, but if not
+        you should add it manually or by runnning setup_aliases.sh in
+        scripts/misc/
+info
+
+# aliases for scripts
+alias vgto="bash ${SCRIPTS_PATH}/converters/vgto.sh"
+alias videotoav1="bash ${SCRIPTS_PATH}/converters/videotoav1.sh"
+
+alias imagetopdf="bash ${SCRIPTS_PATH}/pdf/imagetopdf.sh"
+alias pdfmerge="bash ${SCRIPTS_PATH}/pdf/pdfmerge.sh"
+alias pdfwave="bash ${SCRIPTS_PATH}/pdf/pdfweave.sh"
+alias topdf="bash ${SCRIPTS_PATH}/pdf/topdf.sh"
+
+# convenient alias to make navigating directories in a terminal easier
+alias ..="cd .."
+
+# lets you look at the manual from a package selected from a list of all
+# installed packages
+alias fman="compgen -c | fzf | xargs man"

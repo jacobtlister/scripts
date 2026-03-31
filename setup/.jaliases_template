@@ -34,7 +34,7 @@ alias videotoav1="bash ${SCRIPTS_PATH}/converters/videotoav1.sh"
 
 alias imagetopdf="bash ${SCRIPTS_PATH}/pdf/imagetopdf.sh"
 alias pdfmerge="bash ${SCRIPTS_PATH}/pdf/pdfmerge.sh"
-alias pdfwave="bash ${SCRIPTS_PATH}/pdf/pdfweave.sh"
+alias pdfweave="bash ${SCRIPTS_PATH}/pdf/pdfweave.sh"
 alias topdf="bash ${SCRIPTS_PATH}/pdf/topdf.sh"
 
 # convenient alias to make navigating directories in a terminal easier

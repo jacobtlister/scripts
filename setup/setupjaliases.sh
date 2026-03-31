@@ -2,19 +2,17 @@
 # File: setupjaliases.sh
 
 : <<'info'
+    required packages
+        mlocate
+
     description
         sets up .jaliases file (sets path variable) and adds this file to
         the .bashrc in the home directory
 
-    required packages
-        mlocate
-
-    additional notes
         elevated privileges are needed to run updatedb
 
         by default, updatedb does not add anything in /media to the database,
-        to fix this, remove /media from the PRUNEPATHS variable in
-        /etc/updatedb.conf
+        to fix this, remove /media from the PRUNEPATHS variable in /etc/updatedb.conf
 
         once you run this script you should reload/reopen any open terminals
 info

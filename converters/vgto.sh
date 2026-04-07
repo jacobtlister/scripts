@@ -45,7 +45,7 @@ info
 # shellcheck source=/dev/null
 for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
 
-extensions=("svg" "eps" "pdf" "png" "jpg" "jpeg")
+extensions=("svg" "eps" "pdf" "png" "jpg")
 
 if [[ $# == 0 ]]; then
     inkscape --export-type=eps --export-ignore-filters --export-background-opacity=0.0 --export-dpi=600 --export-text-to-path --export-margin=0 ./*.svg
@@ -54,7 +54,7 @@ elif [[ $# == 1 ]]; then
         print "converts vector graphics files to a variety of different filetypes; converted files keep their original filenames\n\n"
 
         print "valid input  types are: [svg eps pdf]\n"
-        print "valid output types are: [svg eps pdf png jpg jpeg]\n\n"
+        print "valid output types are: [svg eps pdf png jpg]\n\n"
 
         print "there are different behaviors depending on the amount of command line arguments:"
         print "0 - converts all svg files in the pwd into eps files" 4

@@ -10,7 +10,7 @@ i am also using this as an opportunity to learn markdown as i am setting up and 
 
 ## what do these scripts do?
 
-each script's function will be pretty self-explanatory by the filename, but there will also be a list of required packages (if any) and a description of the script
+each script's function will be pretty self-explanatory by the filename and parent directory, but there will also be a list of required packages (if any) and a description of the script
 
 in addition, each proper script will have a `-h/--help` call you can make to get info about the script and example usage
 
@@ -22,15 +22,15 @@ to setup aliases for the scripts in this repository, simply run `setupjaliases.s
 
 ## repository organization
 
-the repository is organized into different directories based on the functionality/purpose of the scripts within:</br>
-`converters/` contains scripts that convert files from one type to another</br>
-`funcs/` contains scripts that implement functions that are used by other scripts in the repository</br>
-`misc/` contains scripts that don't fit into any of the other folders</br>
-`pdf/` contains scripts that manipulate or create `.pdf` files</br>
-`setup/` contains scripts and files related to getting aliases for the scripts in this repository set up and linked to your (yes, yours!) `.bashrc` file</br>
-`templates/` contains template scripts</br>
-`tests/` contains scripts developed for the purposes testing, exploration, or experimenting</br>
-`resources.md` links to different resources i have used (and for what reason), which are usually links to stack overflow answers or tutorials on programming-oriented websites
+the repository is organized into different directories based on the functionality/purpose of the scripts within:
+- `converters/` contains scripts that convert files from one type to another
+- `funcs/` contains scripts that implement functions that are used by other scripts in the repository
+- `misc/` contains scripts that don't fit into any of the other folders
+- `pdf/` contains scripts that manipulate or create `.pdf` files
+- `setup/` contains scripts and files related to getting aliases for the scripts in this repository set up and linked to your (yes, yours!) `.bashrc` file
+- `templates/` contains template scripts
+- `tests/` contains scripts developed for the purposes testing, exploration, or experimenting
+- `resources.md` links to different resources i have used (and for what reason), which are usually links to stack overflow answers or tutorials on programming-oriented websites
 
 ## to-do
 

@@ -78,7 +78,7 @@ done
 help() {
     # list containing strings of long flag names coupled with its
     # default value (if applicable). an example string would be:
-    # flag[=42]
+    # flag=<flg>[42]
     # the above string corresponds to the argument for flag which
     # has default value 42
     helps=()
@@ -164,9 +164,6 @@ for (( i = 0; i < nflags; i++ )); do
     lopts+="${lnames[$i]}${args[$i]},"
 done
 
-# remove uneeded extra comma from end of lopts
-lopts="${lopts:0:$(( "${#lopts}" - 2 ))}"
-
 # we need argsparsed as the 'eval set --' would nuke the return value of getopt
 argsparsed=$(getopt -o "${sopts}" --long "${lopts}" -n "${scriptname}.sh" -- "${@}")
 
@@ -245,14 +242,14 @@ done
 vars=("${source}" "${destination}" "${ecc}" "${credentials}" "${bandwidth}" "${timeout}" "${port}" "${level}")
 validargs "${vars[*]}"
 
-echo "source is $source"
-echo "destination is $destination"
-echo "ecc toggle is set to $ecc"
-echo "credentials are $credentials"
-echo "bandwidth is $bandwidth"
-echo "timeout is $timeout"
-echo "port is $port"
-echo "compression level is $level"
+echo "source is ${source}"
+echo "destination is ${destination}"
+echo "ecc toggle is set to ${ecc}"
+echo "credentials are ${credentials}"
+echo "bandwidth is ${bandwidth}"
+echo "timeout is ${timeout}"
+echo "port is ${port}"
+echo "compression level is ${level}"
 
 bonusargs=()
 

@@ -39,6 +39,7 @@ info
 # https://stackoverflow.com/a/61700520
 # https://bugs.launchpad.net/ubuntu/+source/inkscape/+bug/437366
 # https://askubuntu.com/questions/1451862/warning-message-while-rendering-latex-in-inkscape
+# https://pdf.wondershare.com/pdf-knowledge/pdf-to-jpg-linux.html
 
 # sources all functions in /scripts/funcs/
 # commenting this so shellcheck doesn't freak out

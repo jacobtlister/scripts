@@ -124,6 +124,10 @@ another resource that gives a more in - depth explanation of fmt and fold
 
 <https://stackoverflow.com/a/46049228>
 
+## on modifying pdf files via command line
+
+<https://jon.dehdari.org/tutorials/pdf_tricks.html>
+
 ## markdown resources
 
 markdown guide used for making the README

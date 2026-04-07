@@ -34,8 +34,36 @@ the repository is organized into different directories based on the functionalit
 
 ## to-do
 
-1. now that i have learned to implement flag arguments via `getopt`, i plan on updating all of my scripts to make use of flag arguments. this should provide far more robustness and flexibility to the scripts
+below is a list of tasks i would like to accomplish when working on this repository:
 
-2. add support for `.jpg` as an output filetype for `converters/vgto.sh`. also add more support for custom input filetype
+1. template-ize the contents of `/tests/testflags.sh` and put it in `/templates/template.sh`. now that i have learned to implement flag arguments via `getopt`, update all existing scripts to make use of flag arguments. this should provide far more robustness and flexibility to the scripts
 
-3. implement hardware encoding for `converters/videotoav1.sh`. mostly just need to get the `nvenc` encoders and decoders installed on my laptop
+2. make a script for batch re-encoding audio files based on the python script in fenway's ( my fren (: ) `audio_converter` repository i helped with a couple of years ago
+
+3. add support for `jpg` as an output filetype for `converters/vgto.sh`
+
+4. implement hardware encoding for `converters/videotoav1.sh`; mostly just need to get the `nvenc` encoders and decoders installed on my laptop
+
+5. write a script for splitting a pdf into multiple children pdf files
+
+6. write a script for extracting pages from a pdf
+
+7. write a script to flatten and/or compress a pdf (possibly)
+
+8. write a script that ocr's a pdf without blowing up the filesize
+
+for audio re-encoding, base it off of fenway's python script:
+
+<https://github.com/fenwaypowers/audio_converter>
+
+for extracting a page range from a pdf, the command that would be used in the script would look something like the following:
+
+`gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -dFirstPage=start -dLastPage=end -sOutputFile=input_start-end.pdf input.pdf`
+
+the above command can also be used in the script for splitting a pdf
+
+the following link provides a way of flattening a pdf with ghostscript:
+
+<https://unix.stackexchange.com/a/234330>
+
+for the ocr scan script, i have messed around with `tesseract` in the past, but have found that it massively blows up the filesize of any ocr'ed pdf. maybe mess around with the options and see what can be done to reduce metadata size? i know that the website pdf24 has a really good ocr implementation that barely increases the filesize (a few MB increase for a 300+ page pdf scan of a book). maybe just figure out what set of commands they use to perform their ocr scan and make a script implementing those commands?

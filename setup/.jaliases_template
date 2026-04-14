@@ -1,7 +1,7 @@
 #!/bin/bash
 # File: .jaliases
 
-# path to scripts folder (up here so its line number is constant)
+# path to scripts repository (up here so its line number is constant)
 export SCRIPTS_PATH="/path/to/scripts"
 
 : <<'info'

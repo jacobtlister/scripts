@@ -23,6 +23,7 @@ to setup aliases for the scripts in this repository, simply run `setupjaliases.s
 ## repository organization
 
 the repository is organized into different directories based on the functionality/purpose of the scripts within:
+
 - `converters/` contains scripts that convert files from one type to another
 - `funcs/` contains scripts that implement functions that are used by other scripts in the repository
 - `misc/` contains scripts that don't fit into any of the other folders

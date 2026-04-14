@@ -6,15 +6,15 @@
         mlocate
 
     description
-        sets up .jaliases file (sets path variable) and adds this file to
-        the .bashrc in the home directory
+        copies .jaliases to ~/ and has the copy be sourced in ~/.bashrc
 
         elevated privileges are needed to run updatedb
 
-        by default, updatedb does not add anything in /media to the database,
-        to fix this, remove /media from the PRUNEPATHS variable in /etc/updatedb.conf
+        by default, updatedb does not search anywhere in /media, to fix this, remove
+        /media from the PRUNEPATHS variable in /etc/updatedb.conf
 
-        once you run this script you should reload/reopen any open terminals
+        once you run this script, you should reload/reopen any open terminals for
+        effects to fully take place
 info
 
 # update file database for locate command
@@ -30,24 +30,25 @@ echo "scripts repository path is: ${path}"
 # inserts \ before any / in path for use in a sed command
 sedpath="${path//\//\\/}"
 
-# make a version of .jaliases in home directory
-# update it if the file is already there
+# make a copy of .jaliases in ~/
+# update ~/.jaliases if it already exists
 cp "${path}/setup/.jaliases_template" ~/.jaliases
 sed -i "5s/\/path\/to\/scripts/${sedpath}/" ~/.jaliases
 
-# check if .jaliases is already added to .bashrc. do this to check exit code
-# late. grep returns 1 if the inputted string is not found, 0 if found
-grep "alias definitions for jacob's scripts repository" ~/.bashrc > /dev/null
+# check if .jaliases is already sourced in ~/.bashrc. do this to check exit
+# code later; grep returns 1 if the inputted string is not found, 0 if found
+grep "\. ~/.jaliases" ~/.bashrc > /dev/null
 
-# add .jaliases to .bashrc if its not already in .bashrc
+# source .jaliases in ~/.bashrc if its not already
 if [ $? == 1 ]; then
     cat "${path}/setup/bashrc_jaliases_append.txt" >> ~/.bashrc
-    echo "placed .jaliases include statement in ~/.bashrc"
-    echo "placed .jaliases in the home directory"
+    echo "placed .jaliases source statement in ~/.bashrc"
+    echo "copied .jaliases to ~/"
 else
-    echo ".jaliases already included in ~/.bashrc"
+    echo ".jaliases already sourced in ~/.bashrc"
     echo "updated ~/.jaliases"
 fi
 
-# reload shell
-exec "$BASH"
+# reload shell in the current terminal to save you a bit of time
+# shellcheck source=/dev/null
+. ~/.bashrc

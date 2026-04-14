@@ -13,19 +13,15 @@ export SCRIPTS_PATH="/path/to/scripts"
         none
 
     additional notes
-        for this to work, the following line of code must be defined in the
+        for this to work, the following lines of code must be defined in the
         .bashrc file in your home directory:
 
             if [ -f ~/.jaliases ]; then
                 . ~/.jaliases
-
-            elif [ -f /path/to/scripts/.jaliases ]; then
-                . /path/to/scripts/.nopush/.jaliases
             fi
 
-        this is usually included by default in your .bashrc file, but if not
-        you should add it manually or by runnning setup_aliases.sh in
-        scripts/misc/
+        you can add this manually or by runnning setupjaliases.sh in
+        scripts/setup/ (this directory!)
 info
 
 # aliases for scripts

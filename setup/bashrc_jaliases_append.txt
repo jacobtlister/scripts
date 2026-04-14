@@ -1,5 +1,5 @@
 
-# alias definitions for jacob's scripts repository
+# alias definitions for the scripts repository
 if [ -f ~/.jaliases ]; then
     . ~/.jaliases
 fi

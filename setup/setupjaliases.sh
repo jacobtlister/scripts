@@ -18,6 +18,7 @@
 info
 
 # update file database for locate command
+echo "updating file database..."
 sudo updatedb
 
 # get path to scripts repository
@@ -40,11 +41,12 @@ grep "alias definitions for jacob's scripts repository" ~/.bashrc > /dev/null
 
 # add .jaliases to .bashrc if its not already in .bashrc
 if [ $? == 1 ]; then
-    echo "added .jaliases to .bashrc"
     cat "${path}/setup/bashrc_jaliases_append.txt" >> ~/.bashrc
-
+    echo "placed .jaliases include statement in ~/.bashrc"
+    echo "placed .jaliases in the home directory"
 else
-    echo ".jaliases already added to .bashrc"
+    echo ".jaliases already included in ~/.bashrc"
+    echo "updated ~/.jaliases"
 fi
 
 # reload shell

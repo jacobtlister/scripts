@@ -26,10 +26,11 @@ info
 # shellcheck source=/dev/null
 for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
 
-if [ $# == 0 ]; then
-    libreoffice --convert-to pdf ./*.doc* ./*.ppt*
+if [[ $# == 0 ]]; then
+    libreoffice --convert-to pdf:writer_pdf_Export ./*.doc*
+    libreoffice --convert-to 'pdf:impress_pdf_Export:{"ExportHiddenSlides":{"type":"boolean","value":"true"}}}' ./*.ppt*
     rm -f ./*.doc* ./*.ppt*
-elif [ $# == 1 ] && { [ "${1}" == "-h" ] || [ "${1}" == "--help" ]; }; then
+elif [[ $# == 1 ]] && { [ "${1}" == "-h" ] || [ "${1}" == "--help" ]; }; then
     print "converts doc* and ppt* files to pdf files and deletes the original files; converted files keep their names\n\n"
 
     print "there are different behaviors depending on the amount of command line arguments:"
@@ -42,6 +43,19 @@ elif [ $# == 1 ] && { [ "${1}" == "-h" ] || [ "${1}" == "--help" ]; }; then
     print "bash topdf.sh *.doc*" 4
     print "bash topdf.sh file1.docx file2.ppt file3.pptx file4.doc" 4
 else
-    libreoffice --convert-to pdf "${@}"
-    rm -f "${@}"
+    for file in "${@}"; do
+        extension="${file##*.}"    # gets everything after last '.' (normally the whole file extension)
+        extension="${extension,,}" # converts the entire string to lower case (for easier comparisons)
+
+        if [[ "${extension}" == "doc" ]] || [[ "${extension}" == "docx" ]]; then
+            libreoffice --convert-to pdf:writer_pdf_Export "${file}"
+            rm -f "${file}"
+        elif [[ "${extension}" == "ppt" ]] || [[ "${extension}" == "pptx" ]]; then
+            libreoffice --convert-to 'pdf:impress_pdf_Export:{"ExportHiddenSlides":{"type":"boolean","value":"true"}}}' "${file}"
+            rm -f "${file}"
+        else
+            libreoffice --convert-to pdf "${file}"
+            rm -f "${file}"
+        fi
+    done
 fi

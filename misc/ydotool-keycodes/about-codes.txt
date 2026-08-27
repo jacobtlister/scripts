@@ -1,0 +1,8 @@
+source file is from:
+    /usr/include/linux/input-event-codes.h
+
+input-event-codes.h contains macro definitions for keycodes corresponding to each key on a keyboard (plus a lot more keys!)
+
+these keycodes are used when simulating key presses using the ydotool command
+
+reference this header file whenever you need to use ydotool

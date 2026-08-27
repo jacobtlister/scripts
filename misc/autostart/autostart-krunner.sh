@@ -1,5 +1,5 @@
 #!/bin/bash
-# File: krunner-autostart.sh
+# File: autostart-krunner.sh
 
 : <<'info'
     required packages
@@ -7,7 +7,7 @@
 
     description
         starts krunner in the background
-        this script is meant to be used as an autostart login script on kde
+        this script is meant to be used as a login autostart script on kde
 info
 
 krunner --daemon

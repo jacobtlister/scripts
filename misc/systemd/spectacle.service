@@ -1,3 +1,8 @@
+# custom systemd service for spinning up spectacle and keeping it always running in the background to reduce invocation lag
+# sourced from the following forum threads
+# https://bugs.kde.org/show_bug.cgi?id=442876
+# https://discuss.kde.org/t/make-spectacle-launch-faster/38030/7
+
 [Unit]
 Description=Run spectacle in background
 PartOf=graphical-session.target

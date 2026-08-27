@@ -10,9 +10,10 @@
 
     description
         starts the ydotool systemd service to enable the use of ydotool
-        starts a custom systemd service to passively run spectacle in the background
-        simulates key presses to disable the compositor. we disable the compositor to improve performance of spectacle
-        this script is meant to be used as an autostart login script on kde
+        starts a custom systemd service that ensures spectacle is always running in the background
+        simulates key presses to disable the compositor
+        we disable the compositor to improve performance of spectacle after taking a screenshot/capturing video
+        this script is meant to be used as a login autostart script on kde
 info
 
 # starts the ydotool systemd service (this is needed to use ydotool)
@@ -25,6 +26,8 @@ sleep 1;
 
 # code below focuses on the desktop, presses alt + shift + f12 to disable the compositor, then focuses back on the open windows
 # focus to the desktop before pressing the shortcut because if you press it in something like a terminal it won't work right
+# idea for disabling the compositor on session start sourced from the following forum thread:
+# https://forum.endeavouros.com/t/spectacle-screenshot-bug-rectangle-selection/29541
 
 # focus on the desktop
 # -k flag of wmctrl apparently doesn't work in most window managers, but it works for me! winning

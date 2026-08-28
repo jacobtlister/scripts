@@ -13,7 +13,7 @@
         accepts at most 4 key presses in a modified keystroke
 
         $1: string which is the modified keystroke to press
-        $2: delay (default 0)
+        $2: key delay (default 12msec, matching ydotool defaults)
 info
 
 # sources all functions in /scripts/funcs/
@@ -23,8 +23,8 @@ for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
 
 mkey_in="${1// /}"
 
-# key press delay, default value is 0msec
-delay=$(( ${2:-0} ))
+# key press delay, default value is 12msec to match ydotool
+delay=$(( ${2:-12} ))
 
 # variables to store each keycode as an integer
 code1=$(( 0 ))

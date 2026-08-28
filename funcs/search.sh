@@ -8,6 +8,10 @@
     description
         searches a list arr for string str. if str is found in arr, return
         the indices where str was found in arr. if not, return -1
+
+        note: for the list to search through, you must enter it as:
+                      "${list[*]}" (join list into single string)
+                  not "${list[@]}" (keep list iterable)
 info
 
 # $1 - string to search for

@@ -9,6 +9,10 @@
         DESCRIPTION
 info
 
+# so that i can run aliases in ~/.jaliases in scripts
+shopt -s expand_aliases
+source ~/.jaliases
+
 # because this lives in /funcs/, cannot just source all in
 # scripts/funcs/, else recursion. instead, just source what's needed
 # commenting this so shellcheck doesn't freak out

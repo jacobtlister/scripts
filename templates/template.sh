@@ -9,6 +9,10 @@
         DESCRIPTION
 info
 
+# so that i can run aliases in ~/.jaliases in scripts
+shopt -s expand_aliases
+source ~/.jaliases
+
 # sources all functions in /scripts/funcs/
 # commenting this so shellcheck doesn't freak out
 # shellcheck source=/dev/null

@@ -8,7 +8,8 @@
     description
         copies .jaliases to ~/ and has the copy be sourced in ~/.bashrc
 
-        elevated privileges are needed to run updatedb
+        while elevated privileges are needed to run updatedb, **do not run the entire
+        script with elevated priveleges**, or it will not work correctly!
 
         by default, updatedb does not search anywhere in /media, to fix this, remove
         /media from the PRUNEPATHS variable in /etc/updatedb.conf
@@ -17,23 +18,37 @@
         effects to fully take place
 info
 
-# update file database for locate command
-echo "updating file database..."
-sudo updatedb
+if [ "$SCRIPTS_PATH" == "" ]; then
+    # update file database for locate command
+    echo "updating file database..."
+    sudo updatedb
 
-# get path to scripts repository
-path="$(locate /scripts/setup/setup | head -n 1)"
-path="${path%/setup/*}"
+    # get path to scripts repository
+    path="$(locate /scripts/setup/setup | head -n 1)"
+    path="${path%/setup/*}"
 
-echo "scripts repository path is: ${path}"
+    echo "scripts repository path is: ${path}"
 
-# inserts \ before any / in path for use in a sed command
-sedpath="${path//\//\\/}"
+    # inserts \ before any / in path for use in a sed command
+    sedpath="${path//\//\\/}"
 
-# make a copy of .jaliases in ~/
-# update ~/.jaliases if it already exists
-cp "${path}/setup/.jaliases_template" ~/.jaliases
-sed -i "5s/\/path\/to\/scripts/${sedpath}/" ~/.jaliases
+    # make a copy of .jaliases in ~/
+    # update ~/.jaliases if it already exists
+    cp "${path}/setup/.jaliases_template" ~/.jaliases
+    sed -i "5s/\/path\/to\/scripts/${sedpath}/" ~/.jaliases
+
+# if $SCRIPTS_PATH is defined (ie .jaliases exists or existed some point recently)
+# just use the pre-existing $SCRIPTS_PATH value instead of updating the database and
+# searching for the path to the scripts repo
+else
+    # inserts \ before any / in path for use in a sed command
+    sedpath="${SCRIPTS_PATH//\//\\/}"
+
+    # make a copy of .jaliases in ~/
+    # update ~/.jaliases if it already exists
+    cp "${SCRIPTS_PATH}/setup/.jaliases_template" ~/.jaliases
+    sed -i "5s/\/path\/to\/scripts/${sedpath}/" ~/.jaliases
+fi
 
 # check if .jaliases is already sourced in ~/.bashrc. do this to check exit
 # code later; grep returns 1 if the inputted string is not found, 0 if found

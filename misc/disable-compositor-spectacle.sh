@@ -23,4 +23,4 @@ for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
 
 ydo "alt + shift + f12"
 
-spectacle  --nonotify --region --copy-image --background
+spectacle --dbus --nonotify --region --copy-image --background

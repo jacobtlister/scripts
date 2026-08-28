@@ -1,4 +1,10 @@
-# custom systemd service for spinning up spectacle and keeping it always running in the background to reduce invocation lag
+# custom systemd services go in the following directory:
+#     $HOME/.config/systemd/user/
+# to start up a custom service, run the following set of commands:
+#     systemctl --user daemon-reload
+#     systemctl --user enable --now custom-service.service
+
+# a custom systemd service for spinning up spectacle and keeping it always running in the background to reduce invocation lag
 # sourced from the following forum threads
 # https://bugs.kde.org/show_bug.cgi?id=442876
 # https://discuss.kde.org/t/make-spectacle-launch-faster/38030/7

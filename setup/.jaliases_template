@@ -24,21 +24,24 @@ export SCRIPTS_PATH="/path/to/scripts"
         scripts/setup/ (this directory!)
 info
 
+# https://www.shellcheck.net/wiki/SC2139 recommends putting aliases in single
+# quotes to ensure correct variable expansion
+
 # aliases for scripts
-alias vgto="bash ${SCRIPTS_PATH}/converters/vgto.sh"
-alias videotoav1="bash ${SCRIPTS_PATH}/converters/videotoav1.sh"
+alias vgto='bash ${SCRIPTS_PATH}/converters/vgto.sh'
+alias videotoav1='bash ${SCRIPTS_PATH}/converters/videotoav1.sh'
 
-alias imagetopdf="bash ${SCRIPTS_PATH}/pdf/imagetopdf.sh"
-alias pdfmerge="bash ${SCRIPTS_PATH}/pdf/pdfmerge.sh"
-alias pdfweave="bash ${SCRIPTS_PATH}/pdf/pdfweave.sh"
-alias topdf="bash ${SCRIPTS_PATH}/pdf/topdf.sh"
+alias imagetopdf='bash ${SCRIPTS_PATH}/pdf/imagetopdf.sh'
+alias pdfmerge='bash ${SCRIPTS_PATH}/pdf/pdfmerge.sh'
+alias pdfweave='bash ${SCRIPTS_PATH}/pdf/pdfweave.sh'
+alias topdf='bash ${SCRIPTS_PATH}/pdf/topdf.sh'
 
-alias ydo="bash ${SCRIPTS_PATH}/misc/ydo.sh"
-alias focus="bash ${SCRIPTS_PATH}/misc/focus-window.sh"
+alias ydo='bash ${SCRIPTS_PATH}/misc/ydo.sh'
+alias focus='bash ${SCRIPTS_PATH}/misc/focus-window.sh'
 
 # convenient alias to make navigating directories in a terminal easier
-alias ..="cd .."
+alias ..='cd ..'
 
 # lets you look at the manual from a package selected from a list of all
 # installed packages
-alias fman="compgen -c | fzf | xargs man"
+alias fman='compgen -c | fzf | xargs man'

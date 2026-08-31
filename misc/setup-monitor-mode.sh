@@ -13,11 +13,6 @@
         to 1st and 2nd command line argument respectively
 info
 
-# sources all functions in /scripts/funcs/
-# commenting this so shellcheck doesn't freak out
-# shellcheck source=/dev/null
-for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
-
 # get name of managed interface
 interface=$(sudo iw dev | grep -i "Interface" | tail -n 1)
 interface_name="${interface##* }"

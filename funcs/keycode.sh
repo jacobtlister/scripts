@@ -15,13 +15,7 @@
         only standard labels on a us english keyboard are defined in the dictionary
 info
 
-# because this lives in /funcs/, cannot just source all in
-# scripts/funcs/, else recursion. instead, just source what's needed
-# commenting this so shellcheck doesn't freak out
-# shellcheck source=/dev/null
-source "${SCRIPTS_PATH}/funcs/search.sh"
-
-# declare the associative array (dictionary)
+# declare the associative array (dictionary) of keycode key-values
 declare -A keycodes
 
 keycodes["0"]=11

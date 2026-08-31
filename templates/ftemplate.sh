@@ -9,20 +9,10 @@
         DESCRIPTION
 info
 
-# so that i can run aliases in ~/.jaliases in scripts
-shopt -s expand_aliases
-source ~/.jaliases
-
-# because this lives in /funcs/, cannot just source all in
-# scripts/funcs/, else recursion. instead, just source what's needed
-# commenting this so shellcheck doesn't freak out
-# shellcheck source=/dev/null
-# source "${SCRIPTS_PATH}/funcs/func.sh"
-
 # $1 - description
 # $2 - description
 FTEMPLATE() {
 
 
-    return 1
+    return 0
 }

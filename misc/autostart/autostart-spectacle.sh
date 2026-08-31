@@ -16,11 +16,6 @@
         this script is meant to be used as a login autostart script on kde
 info
 
-# sources all functions in /scripts/funcs/
-# commenting this so shellcheck doesn't freak out
-# shellcheck source=/dev/null
-for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
-
 # starts the ydotool systemd service (this is needed to use ydotool)
 systemctl --user enable --now ydotool
 

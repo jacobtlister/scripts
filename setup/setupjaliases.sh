@@ -6,7 +6,9 @@
         mlocate
 
     description
-        copies .jaliases to ~/ and has the copy be sourced in ~/.bashrc
+        places .jaliases     in ~/ and has the copy be sourced in ~/.bashrc
+
+        places .shellcheckrc in ~/
 
         while elevated privileges are needed to run updatedb, **do not run the entire
         script with elevated priveleges**, or it will not work correctly!
@@ -32,14 +34,17 @@ if [ "$SCRIPTS_PATH" == "" ]; then
     # inserts \ before any / in path for use in a sed command
     sedpath="${path//\//\\/}"
 
-    # make a copy of .jaliases in ~/
+    # place .jaliases in ~/
     # update ~/.jaliases if it already exists
     cp "${path}/setup/.jaliases_template" ~/.jaliases
     sed -i "5s/\/path\/to\/scripts/${sedpath}/" ~/.jaliases
 
-# if $SCRIPTS_PATH is defined (ie .jaliases exists or existed some point recently)
-# just use the pre-existing $SCRIPTS_PATH value instead of updating the database and
-# searching for the path to the scripts repo
+    # place .shellcheckrc in ~/
+    cp "${path}/setup/.shellcheckrc_template" ~/.shellcheckrc
+
+# if ${SCRIPTS_PATH} is defined (ie .jaliases exists or existed some point recently)
+# just use the pre-existing ${SCRIPTS_PATH} value instead of updating the database
+# and searching for the path to the scripts repo
 else
     # inserts \ before any / in path for use in a sed command
     sedpath="${SCRIPTS_PATH//\//\\/}"
@@ -48,6 +53,9 @@ else
     # update ~/.jaliases if it already exists
     cp "${SCRIPTS_PATH}/setup/.jaliases_template" ~/.jaliases
     sed -i "5s/\/path\/to\/scripts/${sedpath}/" ~/.jaliases
+
+    # place .shellcheckrc in ~/
+    cp "${SCRIPTS_PATH}/setup/.shellcheckrc_template" ~/.shellcheckrc
 fi
 
 # check if .jaliases is already sourced in ~/.bashrc. do this to check exit
@@ -58,10 +66,12 @@ grep "\. ~/.jaliases" ~/.bashrc > /dev/null
 if [ $? == 1 ]; then
     cat "${path}/setup/bashrc_jaliases_append.txt" >> ~/.bashrc
     echo "placed .jaliases source statement in ~/.bashrc"
-    echo "copied .jaliases to ~/"
+    echo "placed .jaliases in ~/"
+    echo "placed .shellcheckrc in ~/"
 else
     echo ".jaliases already sourced in ~/.bashrc"
     echo "updated ~/.jaliases"
+    echo "updated ~/.shellcheckrc"
 fi
 
 # reload shell in the current terminal to save you a bit of time

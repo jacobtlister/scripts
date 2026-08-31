@@ -1,0 +1,9 @@
+# /bin/bash
+# File: .shellcheckrc
+
+# Allow sourcing external files
+external-sources=true
+
+# https://www.shellcheck.net/wiki/SC1090
+# https://www.shellcheck.net/wiki/SC1091
+disable=SC1090,SC1091

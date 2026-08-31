@@ -1,5 +1,5 @@
 #!/bin/bash
-# File: TEMPLATE.sh
+# File: setup-monitor-mode.sh
 
 : <<'info'
     required packages

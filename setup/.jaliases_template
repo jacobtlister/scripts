@@ -34,6 +34,7 @@ alias pdfweave="bash ${SCRIPTS_PATH}/pdf/pdfweave.sh"
 alias topdf="bash ${SCRIPTS_PATH}/pdf/topdf.sh"
 
 alias ydo="bash ${SCRIPTS_PATH}/misc/ydo.sh"
+alias focus="bash ${SCRIPTS_PATH}/misc/focus-window.sh"
 
 # convenient alias to make navigating directories in a terminal easier
 alias ..="cd .."

@@ -29,21 +29,28 @@
 
         the following link was a very helpful resource when developing this script:
             https://wiki.inkscape.org/wiki/index.php/Using_the_Command_Line
+
+        to-do
+            if converting to jpg, use pdftoppm if input is a pdf and convert if input is a svg/eps
+            create command version that allows custom input filetype as well
+
+        resources
+            https://stackoverflow.com/a/61700520
+            https://bugs.launchpad.net/ubuntu/+source/inkscape/+bug/437366
+            https://askubuntu.com/questions/1451862/warning-message-while-rendering-latex-in-inkscape
+            https://pdf.wondershare.com/pdf-knowledge/pdf-to-jpg-linux.html
 info
 
-# to-do
-# if converting to .jpg, use pdftoppm if input is a pdf and convert if input is a svg/eps
-# create command version that allows custom input filetype as well
+# NOTE: you only need to source function scripts and jaliases in
+# the highest-level script. all child processes of thehighest level
+# script calls will have access to what it sources unless the child
+# is ran in a new/different shell instance
 
-# resources
-# https://stackoverflow.com/a/61700520
-# https://bugs.launchpad.net/ubuntu/+source/inkscape/+bug/437366
-# https://askubuntu.com/questions/1451862/warning-message-while-rendering-latex-in-inkscape
-# https://pdf.wondershare.com/pdf-knowledge/pdf-to-jpg-linux.html
+# to allow calling aliases from ~/.jaliases in the script
+shopt -s expand_aliases
+source "${HOME}/.jaliases"
 
-# sources all functions in /scripts/funcs/
-# commenting this so shellcheck doesn't freak out
-# shellcheck source=/dev/null
+# to allow calling functions from the scripts repo in the script
 for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
 
 extensions=("svg" "eps" "pdf" "png" "jpg")

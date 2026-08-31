@@ -21,14 +21,25 @@
             bash topdf.sh file1.docx file2.ppt file3.pptx file4.doc
 info
 
-# sources all functions in /scripts/funcs/
-# commenting this so shellcheck doesn't freak out
-# shellcheck source=/dev/null
+# NOTE: you only need to source function scripts and jaliases in
+# the highest-level script. all child processes of thehighest level
+# script calls will have access to what it sources unless the child
+# is ran in a new/different shell instance
+
+# to allow calling aliases from ~/.jaliases in the script
+shopt -s expand_aliases
+source "${HOME}/.jaliases"
+
+# to allow calling functions from the scripts repo in the script
 for f in "${SCRIPTS_PATH}/funcs"/*.sh; do source "${f}"; done
 
 if [[ $# == 0 ]]; then
-    libreoffice --convert-to pdf:writer_pdf_Export ./*.doc*
-    libreoffice --convert-to 'pdf:impress_pdf_Export:{"ExportHiddenSlides":{"type":"boolean","value":"true"}}}' ./*.ppt*
+    # shellcheck disable=SC2035
+    libreoffice --convert-to 'pdf:writer_pdf_Export' *.doc*
+
+    # shellcheck disable=SC2035
+    libreoffice --convert-to 'pdf:impress_pdf_Export:{"ExportHiddenSlides":{"type":"boolean","value":"true"}}}' *.ppt*
+
     rm -f ./*.doc* ./*.ppt*
 elif [[ $# == 1 ]] && { [ "${1}" == "-h" ] || [ "${1}" == "--help" ]; }; then
     print "converts doc* and ppt* files to pdf files and deletes the original files; converted files keep their names\n\n"
@@ -48,7 +59,7 @@ else
         extension="${extension,,}" # converts the entire string to lower case (for easier comparisons)
 
         if [[ "${extension}" == "doc" ]] || [[ "${extension}" == "docx" ]]; then
-            libreoffice --convert-to pdf:writer_pdf_Export "${file}"
+            libreoffice --convert-to 'pdf:writer_pdf_Export' "${file}"
             rm -f "${file}"
         elif [[ "${extension}" == "ppt" ]] || [[ "${extension}" == "pptx" ]]; then
             libreoffice --convert-to 'pdf:impress_pdf_Export:{"ExportHiddenSlides":{"type":"boolean","value":"true"}}}' "${file}"

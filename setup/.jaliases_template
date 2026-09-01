@@ -1,8 +1,10 @@
 #!/bin/bash
 # File: .jaliases
 
-# path to scripts repository (up here so its line number is constant)
+# path to important repository (up here so its line number is constant)
 export SCRIPTS_PATH="/path/to/scripts"
+export LATEX_PROJECTS_PATH="/path/to/latex-projects"
+export JATEXSTUDIO_PATH="/path/to/jatexstudio"
 
 : <<'info'
     description
@@ -45,3 +47,6 @@ alias ..='cd ..'
 # lets you look at the manual from a package selected from a list of all
 # installed packages
 alias fman='compgen -c | fzf | xargs man'
+
+# add texlive installation to $PATH
+export PATH="$PATH:/home/meapa/.local/texlive/2026/bin/x86_64-linux"
